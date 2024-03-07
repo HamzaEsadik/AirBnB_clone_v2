@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+generates a .tgz archive
+"""
 from fabric.api import *
 from time import strftime
 from datetime import date
