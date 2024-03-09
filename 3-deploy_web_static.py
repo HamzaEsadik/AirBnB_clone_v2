@@ -41,29 +41,29 @@ def do_deploy(archive_path):
         # create target dir
         timestamp = archive_path[-18:-4]
         run(f'sudo mkdir -p /data/web_static/\
-            releases/web_static_{timestamp}/')
+releases/web_static_{timestamp}/')
 
         # uncompress archive and delete .tgz
         run(f'sudo tar -xzf /tmp/web_static_{timestamp}.tgz -C \
-            /data/web_static/releases/web_static_{timestamp}/')
+/data/web_static/releases/web_static_{timestamp}/')
 
         # remove archive
         run(f'sudo rm /tmp/web_static_{timestamp}.tgz')
 
         # move contents into host web_static
         run(f'sudo mv /data/web_static/releases/web_static_{timestamp}\
-        /web_static/* /data/web_static/releases/web_static_{timestamp}/')
+/web_static/* /data/web_static/releases/web_static_{timestamp}/')
 
         # remove extraneous web_static dir
         run(f'sudo rm -rf /data/web_static/releases/\
-            web_static_{timestamp}/web_static')
+web_static_{timestamp}/web_static')
 
         # delete pre-existing sym link
         run('sudo rm -rf /data/web_static/current')
 
         # re-establish symbolic link
         run(f'sudo ln -s /data/web_static/releases/\
-            web_static_{timestamp}/ /data/web_static/current')
+web_static_{timestamp}/ /data/web_static/current')
     except Exception:
         return False
 
