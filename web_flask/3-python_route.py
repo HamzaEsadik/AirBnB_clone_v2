@@ -23,6 +23,7 @@ def text(text):
     return f'C {new_text}'
 
 
+@app.route('/python', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
 def python(text='is cool'):
     '''function that print text variable'''
