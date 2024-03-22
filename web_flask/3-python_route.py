@@ -24,7 +24,7 @@ def text(text):
 
 
 @app.route('/python/<text>', strict_slashes=False)
-def python(text):
+def python(text='is cool'):
     '''function that print text variable'''
     new_text = text.replace('_', ' ')
     return f'Python {new_text}'
